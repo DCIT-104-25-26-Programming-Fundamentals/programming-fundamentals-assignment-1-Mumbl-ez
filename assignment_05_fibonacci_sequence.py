@@ -49,3 +49,68 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+# =============================================================================
+# PROGRAMMING FUNDAMENTALS — Assignment 5
+# Topic: Loops, Sequences, and Functions
+# =============================================================================
+
+def generate_fibonacci(n):
+    """
+    Part A: Generates and prints the first N numbers of the Fibonacci sequence.
+    """
+    if n <= 0:
+        print("Error: Please enter a positive integer greater than 0.")
+        return
+
+    sequence = []
+    a, b = 0, 1
+
+    for _ in range(n):
+        sequence.append(a)
+        a, b = b, a + b
+
+    # Convert the list of numbers into space-separated string
+    print(f"Fibonacci sequence: {' '.join(map(str, sequence))}")
+
+
+def is_fibonacci(target):
+    """
+    Part B: Checks if a given number belongs to the Fibonacci sequence.
+    """
+    if target < 0:
+        print(f"{target} is NOT a Fibonacci number.")
+        return
+
+    a, b = 0, 1
+
+    # Generate Fibonacci numbers using a loop until we reach or exceed the target
+    while a < target:
+        a, b = b, a + b
+
+    if a == target:
+        print(f"{target} is a Fibonacci number.")
+    else:
+        print(f"{target} is NOT a Fibonacci number.")
+
+
+# =============================================================================
+# MAIN PROGRAM DRIVER
+# =============================================================================
+def main():
+    print("--- PART A: Generate Fibonacci Sequence ---")
+    try:
+        terms = int(input("How many terms? "))
+        generate_fibonacci(terms)
+    except ValueError:
+        print("Error: Invalid input. Please enter a valid integer.")
+
+    print("\n--- PART B: Check Fibonacci Membership ---")
+    try:
+        num = int(input("Enter a number to check: "))
+        is_fibonacci(num)
+    except ValueError:
+        print("Error: Invalid input. Please enter a valid integer.")
+
+
+if __name__ == "__main__":
+    main()
