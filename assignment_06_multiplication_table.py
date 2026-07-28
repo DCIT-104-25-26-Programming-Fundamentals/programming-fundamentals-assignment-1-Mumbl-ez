@@ -55,3 +55,58 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+# =============================================================================
+# PROGRAMMING FUNDAMENTALS — Assignment 6
+# Topic: Loops and Functions
+# =============================================================================
+
+def print_single_table(num):
+    """
+    Part A: Prints the multiplication table for a single given number from 1 to 12.
+    """
+    print(f"\nMultiplication Table for {num}:")
+    for i in range(1, 13):
+        # formatted with alignment so numbers line up neatly
+        print(f"{num:2d}  x  {i:2d}  =  {num * i:3d}")
+
+
+def print_tables_up_to_n(n):
+    """
+    Part B: Prints multiplication tables for all numbers from 1 to N.
+    """
+    for current_num in range(1, n + 1):
+        print_single_table(current_num)
+        
+        # Add a separator line after each table except the last one
+        if current_num < n:
+            print("-" * 28)
+
+
+# =============================================================================
+# MAIN PROGRAM DRIVER
+# =============================================================================
+def main():
+    print("=== PART A: Single Multiplication Table ===")
+    try:
+        user_num = int(input("Enter a number: "))
+        if user_num <= 0:
+            print("Error: Please enter a positive integer greater than 0.")
+            return
+        print_single_table(user_num)
+    except ValueError:
+        print("Error: Invalid input. Please enter a valid integer.")
+        return
+
+    print("\n\n=== PART B: Multiplication Tables from 1 to N ===")
+    try:
+        max_n = int(input("Enter a number N: "))
+        if max_n <= 0:
+            print("Error: Please enter a positive integer greater than 0.")
+            return
+        print_tables_up_to_n(max_n)
+    except ValueError:
+        print("Error: Invalid input. Please enter a valid integer.")
+
+
+if __name__ == "__main__":
+    main()
